@@ -1,7 +1,7 @@
 #!/usr/bin/expect -f
 
 set timeout -1
-spawn php ./vendor/bin/vapor login
+spawn /root/php-7-bin/bin/php /root/todo-vapor/vendor/bin/vapor login
 match_max 100000
 expect -exact "\r
  [32mEmail Address[39m:\r
