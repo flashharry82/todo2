@@ -113,7 +113,7 @@ class TaskController extends Controller
     	$output = $process->getOutput();*/
 
         $output = shell_exec('/var/task/vendor/laravel/vapor-cli/vapor login');
-        shell_exec("echo \"id: {$_ENV['VAPOR_APP_ID']}\" >> /tmp/vapor.yml");
+        shell_exec("echo \"id: {$_ENV['VAPOR_APP_ID']}\" > /tmp/vapor.yml");
         $output2 = shell_exec("cat /tmp/vapor.yml");
         $output3[0] = 'test';
         $status = 0;
