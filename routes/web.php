@@ -19,4 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
+});
+
+Route::get('/process', 'TaskController@process');
+
 Route::resource('tasks', 'TaskController');

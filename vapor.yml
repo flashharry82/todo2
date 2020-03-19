@@ -1,8 +1,8 @@
-id: 8049
+id: 8120
 name: todo
 environments:
     production:
-        database: laravel
+        #database: laravel
         memory: 1024
         cli-memory: 512
         runtime: php-7.4
@@ -10,5 +10,5 @@ environments:
             - 'composer install --no-dev'
             - 'php artisan event:cache'
             - 'npm ci && npm run prod && rm -rf node_modules'
-        deploy:
-            - 'php artisan migrate --force'
+        #deploy:
+        #    - 'php artisan migrate --force'

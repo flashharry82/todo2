@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class TaskController extends Controller
 {
@@ -100,5 +102,24 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function process() {
+    	/*$process = new Process(['/usr/bin/curl -s -XGET http://www.google.com']);
+		$process->run();
+		if (!$process->isSuccessful()) {
+		    throw new ProcessFailedException($process);
+		}
+    	$output = $process->getOutput();*/
+
+        $output = shell_exec('/var/task/vendor/laravel/vapor-cli/vapor login');
+        shell_exec("echo \"id: {$_ENV['VAPOR_APP_ID']}\" >> /tmp/vapor.yml");
+        $output2 = shell_exec("cat /tmp/vapor.yml");
+        $output3[0] = 'test';
+        $status = 0;
+        //exec('/var/task/vendor/laravel/vapor-cli/vapor deploy:list production', $output2, $status);
+        exec('/var/task/vendor/laravel/vapor-cli/vapor env test', $output3, $status);
+
+        return view('tasks.process', compact(['output','output2','output3','status']));
     }
 }
