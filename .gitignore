@@ -15,3 +15,4 @@ yarn-error.log
 .env.staging
 .env.list
 .env.help
+.env.test
