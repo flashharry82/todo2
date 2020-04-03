@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('main')
+
 <div class="row">
 <div class="col-sm-12">
-    <h1 class="display-3">Tasks</h1>
+  <h1 class="display-3">Tasks</h1>
   <table class="table table-striped">
     <thead>
         <tr>

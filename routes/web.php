@@ -16,12 +16,8 @@ use Illuminate\Html\FormBuilder;
 */
 
 Route::get('/', function () {
+    var_dump(public_path());
     return view('welcome');
-});
-
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('config:cache');
-    return 'DONE'; //Return anything
 });
 
 Route::get('/process', 'TaskController@process');
